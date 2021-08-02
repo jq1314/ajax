@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>get</title>
+</head>
+<body>
+<h1>该页面使用了原生ajax发送的get请求</h1>
+<script type="text/javascript">
+    //1.实例化一个XMLHttpRequest对象
+	let xhr = new XMLHttpRequest();
+
+    //2.绑定一个名为onreadystatechange事件监听
+	xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200){
+                //进入此判断,意味着:请求成功,数据已经回来
+                console.log(xhr.response);
+            }
+    }
+    //调用open方法---用什么发?给谁发?带着什么发?
+    xhr.open('get','http://localhost:3000/ajax?name=fuxu&age=21') 
+    //调用send方法---发送请求
+    xhr.send();
+</script>
+
+</body>
+</html>

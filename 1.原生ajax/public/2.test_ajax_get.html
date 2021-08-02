@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原生js_ajax_GET</title>
+</head>
+<body>
+<h1>该页面测试使用js发送ajax请求</h1>
+<button id="btn"> 点击发送原生ajax请求</button>
+<div id="demo"></div>
+<script type="text/javascript">
+    let btn = document.querySelector('#btn');
+    btn.onclick = function () {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(xhr.response);
+
+                let demo = document.querySelector('#demo');
+                demo.innerHTML = xhr.response;
+            }
+        }
+        xhr.open('get', 'http://localhsot:3000/ajax_get?name=kobe&age=18&t=' + Date.now())
+        xhr.send()
+    }
+
+</script>
+</body>
+</html>
